@@ -1,6 +1,5 @@
 package com.leiloestds;
 
-
 import com.leiloestds.ProdutosDTO;
 import com.leiloestds.ProdutosDAO;
 
@@ -8,7 +7,6 @@ import com.leiloestds.ProdutosDAO;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Adm
@@ -141,8 +139,8 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroNomeActionPerformed
-        
-        
+
+
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -155,12 +153,20 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produto.setStatus(status);
         
         ProdutosDAO produtodao = new ProdutosDAO();
-        produtodao.cadastrarProduto(produto);
-        
+
+        try {
+            produtodao.cadastrarProduto(produto);
+            javax.swing.JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+            cadastroNome.setText("");
+            cadastroValor.setText("");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + e.getMessage());
+        }
+    
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
-        listagemVIEW listagem = new listagemVIEW(); 
+        listagemVIEW listagem = new listagemVIEW();
         listagem.setVisible(true);
         this.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnProdutosActionPerformed
@@ -195,6 +201,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // Tela principal definida como cadastroVIEW
                 new cadastroVIEW().setVisible(true);
             }
         });
