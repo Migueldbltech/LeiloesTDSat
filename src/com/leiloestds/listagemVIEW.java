@@ -22,6 +22,7 @@ public class listagemVIEW extends javax.swing.JFrame {
      */
     public listagemVIEW() {
         initComponents();
+        jLabel1.setText("Listagem de Produtos");
         listarProdutos();
         this.setLocationRelativeTo(null);
     }
